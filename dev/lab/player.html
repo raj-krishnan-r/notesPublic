@@ -1,0 +1,298 @@
+
+<!doctype html>
+<head>
+	<style>
+		.track_title
+		{
+			font-family: "Segoe UI Light",Arial;
+			font-size: 20px;
+			color:#48654C;
+			text-align: center;
+                  margin: 1%;
+		}
+            .track_timer
+            {
+              font-family: "Segoe UI Light",Arial;
+               font-size: 25px;
+              color: brown;
+               text-align: center;
+                text-shadow: 0px 0px 1px white;
+            }
+		.notes
+		{
+				font-family: "Segoe UI Light",Arial;
+			font-size: 20px;
+			color:steelblue;
+			text-align: right;
+			background: seashell;
+			text-shadow: 0px 0px 1px black;
+		}
+		.controls
+		{
+			text-align: center;
+		}
+		.controls button
+		{
+			width: 80px;
+			height: 80px;
+			border: none;
+			background: darkolivegreen;
+			color: floralwhite;
+			cursor: pointer;
+			border-radius: 90px;
+			border: 1px white solid;
+		}
+			.controls button: hover
+		{
+			border: 2px solid black;
+		}
+		.adjust_volume
+		{
+			color: seagreen;
+		}
+		.track_seek
+		{
+			width: 30%;
+			cursor: pointer;
+			background: seagreen;
+		}
+            .footer
+            {
+                  position:absolute;
+                  bottom: 0px;
+                  font-family: Arial,serif;
+                  color: black;
+                  font-size: 11px;
+                  text-align: center;
+                  width: 90%;
+                  left: 5%;
+            }
+			.playList
+			{
+
+
+margin: 5%;
+width: 30%;
+overflow-y: scroll;
+border-radius: 2px;
+box-shadow: 0px 0px 2px black;
+min-width: 200px;
+min-height: 200px;
+height: 200px;
+box-shadow: 0px 0px 4px rgb(17, 102, 4);
+
+			}
+			.playList .item
+			{
+				font-family: "Segoe UI Light",Arial;
+				cursor: pointer;
+				background: rgba(66, 176, 80, 0.13);
+				margin: 1%;
+				text-shadow: 0px 0px 1px darkolivegreen;
+				font-size: 13px;
+			}
+					.playList .item :hover
+			{
+
+background: darkgray;
+text-shadow: 0px 0px 0px thistle;
+			}
+		</style>
+</head>
+<body>
+	<div class="notes">Notes Music Player</div>
+		<div class="track_title" id="track_title"></div>
+	<div align="center"><div align="center"><input  value="0"  class="track_seek" type="range" id="track_seek" max="100" min="0" step=".1"/></div><audio src=""  id="player"></audio></div>
+	<input type="file" id="fileSelect" style="visibility:hidden;"/>
+		<div class="controls"><button  id="openFile_control">Open File</button>
+		<button disabled id="play_control">Play</button>
+				<button hidden id="previous_control">Previous</button>
+<button hidden  id="next_control">Next</button>
+    <button  id="stop_control">Stopped</button>
+				</div>
+				<div align="center"><input  class="adjust_volume" type="range" id="volume_control" value="60" max="100" step="1"/></div>
+				
+		<div class="track_timer" id="track_timer"></div>
+		<div title="Track list, you can drag and drop music files to here too."  id="playList" class="playList">
+		</div>
+	<script>
+		var counter=0,index=0,currentItem=0;
+					var playList=new Array(); 
+		function $id(ob)
+		{
+			return document.getElementById(ob);
+		}
+		var fileselect = $id("fileSelect");
+		var wholeBody = document.getElementsByTagName('body')[0];
+		document.getElementsByTagName('body')[0].addEventListener("dragover",FileDragHover,false);
+		document.getElementsByTagName('body')[0].addEventListener("dragleave",FileDragOut,false);
+		document.getElementsByTagName('body')[0].addEventListener("drop",FileSelectHandler,false);
+		$id('playList').addEventListener("dragover",FileDragHover,false);
+		$id('playList').addEventListener("dragleave",FileDragOut,false);
+		$id('playList').addEventListener("drop",FileSelectHandler,false);
+		$id('play_control').addEventListener("click",togglePlay,false);
+				$id('track_seek').addEventListener("change",function ()
+					{
+					var val = $id('track_seek').value;
+					$id('player').currentTime=(val/100)*($id('player').duration);
+					},false);
+		$id('volume_control').addEventListener('change',function(){
+		var set = $id('volume_control').value;
+		$id('player').volume=(set/100);
+
+		},false);
+		$id('openFile_control').addEventListener("click",function (){$id('fileSelect').click();},false);
+            		$id('stop_control').addEventListener("click",stopPlay,false);
+		$id('previous_control').addEventListener("click",function ()
+			{
+				currentItem=index-1;
+				if(currentItem>0){
+				controls.playByReference(playList[currentItem]);
+				}
+				else
+				{
+					currentItem++;
+				}
+				
+			}
+			,false);
+				$id('next_control').addEventListener("click",function ()
+			{
+				currentItem++;
+				if(playList.length>currentItem){
+				controls.playByReference(playList[currentItem]);
+				}
+				else
+				{
+				currentItem--;
+				}
+			}
+			,false);
+			fileselect.addEventListener("change",FileSelectHandler,false);
+                  function stopPlay()
+                  {
+                        controls.stopPlay();
+                  }
+			function FileDragHover(e)
+			{
+			e.stopPropagation();
+	e.preventDefault();
+			}
+			function FileDragOut(e)
+			{
+		e.stopPropagation();
+	e.preventDefault();
+			}
+			function FileSelectHandler(e)
+			{
+					FileDragOut(e);
+				$id('track_title').innerHTML="Loading...";
+				var file =  e.target.files || e.dataTransfer.files;
+				var f = file[0];
+				var reader = new FileReader();
+			reader.onload = function(e) {
+			$id('player').src=e.target.result;
+			$id('track_title').innerHTML=f.name;
+				playList[index++]=f;
+			controls.playControl(true);
+			$id('playList').innerHTML="";
+			for(var a = (playList.length-1);a>=0;a--)
+			{
+			var span = document.createElement('div');
+			$id('playList').appendChild(span);
+			span.innerHTML=playList[a].name;	
+			span.setAttribute('id',a);
+			span.setAttribute('onclick','listPlay(this)');
+						span.setAttribute('class','item');
+			}
+			$id('play_control').removeAttribute('disabled');
+			}
+			reader.readAsDataURL(f);
+			}
+			function listPlay(ob)
+			{
+				controls.playByReference(playList[ob.id]);
+			}
+			function togglePlay()
+			{
+				if(counter%2!=0)
+				controls.playControl(false);
+				else
+				controls.playControl(true);
+			}
+			function playControl(bool)
+			{
+				if(bool)
+				{
+					counter++;
+					$id('player').play();
+					$id('play_control').innerHTML="Pause";
+				}
+				else
+				{
+					counter++;
+					$id('player').pause();
+					$id('play_control').innerHTML="Play";
+				}
+			}
+			var controls = {};
+			controls={
+				playControl: function(bool)
+				{
+					if(bool)
+				{
+					counter++;
+					$id('player').play();
+					var timer=window.setInterval(function(){
+					$id('track_timer').innerHTML=controls.showTime(Math.round($id('player').currentTime))+" / "+controls.showTime(($id('player').duration));
+					$id('player').volume=($id('volume_control').value/100);
+					$id('track_seek').value=((($id('player').currentTime/($id('player').duration)*100)));
+					},1000);
+                              if(Math.round($id('player').currentTime)==Math.round($id('player').duration))
+                                    {
+                                          window.clearInterval(timer);
+                                    }
+					$id('play_control').innerHTML="Pause";
+                     $id('stop_control').innerHTML="Stop";
+				}
+				else
+				{
+					counter++;
+					$id('player').pause();
+					$id('play_control').innerHTML="Play";
+				}
+				},
+				playByReference: function(f)
+				{
+			var reader = new FileReader();
+			reader.onload = function(e) {
+			$id('player').src=e.target.result;
+			$id('track_title').innerHTML=f.name;
+			playControl(true);
+			$id('play_control').removeAttribute('disabled');
+			}
+			reader.readAsDataURL(f);
+				},
+				showTime:function(ref)
+				{
+					var min=0;
+					var sec = 0;
+                    var sec = Math.round(ref%60);
+					if(Math.round(ref)>=60)
+					{
+						 min= Math.floor(ref/60);
+					}
+                              if(min<10){min="0"+min};
+							  if(sec<10){sec="0"+sec};
+					return min+":"+sec;
+				},
+                        stopPlay:function()
+                        {
+                              $id('player').src="";
+                              $id('stop_control').innerHTML="Stopped";
+                        }
+			}
+		</script>
+
+            <div class="footer">All rights reserved. <br>&copy; of Notes Inc. KIC</div>
+</body>

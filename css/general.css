@@ -1,0 +1,873 @@
+.topribbon
+{
+	width: 100vw;
+	height: 5vh;
+	font-size: 3vh;
+background: rgba(19, 20, 23, 0.4);
+}
+
+.topribbon .userInfo
+{
+position: absolute;
+right: 0px;
+top: 0px;
+height: 100%;
+padding-left: 1em;
+padding-right: 1em;
+height: 5vh;
+background: cornflowerblue;
+text-transform: capitalize;
+display: table-cell;
+vertical-align: middle;
+text-align: center;
+font-size: .8em;
+color:white;
+cursor: pointer;
+line-height: 5vh;
+min-width: 8em;
+}
+.sideRack
+{
+	position: absolute;
+	top:5vh;
+	left: 0px;
+	width: 15vw;
+	height: calc(100vh - 5vh);
+background: rgb(19, 20, 23);
+	z-index: 1;
+
+}
+.sideRack .options ul
+{
+	list-style: none;
+}
+.sideRack .options ul li
+{
+	text-indent: 1em;
+	width: 15vw;
+	color: rgb(100, 149, 237);
+	background: rgb(49, 54, 69);
+	margin-top: .5em;
+font-size: 1.2em;
+cursor: pointer;
+text-transform: capitalize;
+
+}
+.sideRack .searchNotes
+{
+margin-top: 1em;
+margin-bottom: 1em;
+width: 100%;
+text-align: center;
+}
+.button-primary
+{
+	padding: 0 0;
+}
+.sideRack .louis
+{
+	margin-top: 1em;
+color: rgb(165, 165, 165);
+text-align: center;
+}
+.sideRack div:hover
+{
+color: wheat;
+}
+.contentPlace
+{
+position: absolute;
+top:10vh;
+width:calc(100vw - 15vw);
+background: rgb(241, 238, 245);
+height: calc(100vh - 10vh);
+left: 15vw;
+overflow-y: scroll;
+}
+.sideRack button
+{
+	color: white;
+	width: 13vw;
+}
+.sideRack input[type="text"]
+{
+	color: rgb(100, 149, 237);
+	border: none ;
+	border-radius: 1px;
+	width: 14.5vw;
+}
+/*
+Rules for addNote.html
+*/
+.writeNoteContainer
+{
+	position: absolute;
+	width:90%;
+	height:90%;
+	top: 5%;
+	left: 5%;
+
+}
+.writeNoteContainer div[label="inherit"]
+{
+position: relative;
+float: left;
+width:45%;
+min-height: 45%;
+margin: 2.5%;
+margin-bottom: 0%;
+}
+.writeNoteContainer .typeArea 
+{
+	background: none;
+height: 45%;
+}
+.writeNoteContainer .typeArea textarea
+{
+	width: 100%;
+	height: 100%;
+	border: none;
+	border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+}
+.writeNoteContainer .typeArea #typeSpace
+{
+width: 100%;
+height: 100%;
+text-align: left;
+background: white;
+overflow: scroll;
+}
+.writeNoteContainer .typeArea #typeSpace div
+{
+width: auto;
+height: 1em;
+float: none;
+margin: 0;
+padding: 0;
+font-size: 1em;
+}
+.writeNoteContainer .typeArea .noteProperties
+{
+	margin: 0%;
+	min-height: 1em;
+	background: cornflowerblue;
+	width: 100%;
+	font-size: 1.5em;
+	color: white;
+	text-align: center;
+	
+}
+.writeNoteContainer .typeArea .noteProperties .dateSwitchArrow
+{
+	margin: .5em;
+	color: white;
+	cursor: pointer;
+	display: none;
+}
+.writeNoteContainer .typeArea .noteProperties .dateSwitchArrow:hover
+{
+	color: black;
+}
+.writeNoteContainer .typeArea .buttonPocket
+{
+width: auto;
+text-align: center;
+}
+.writeNoteContainer .typeArea .buttonPocket input[type="button"]
+{
+	position: relative;
+	float: left;
+	margin-right: 1em;
+	padding: 0px 0px;
+}
+#noteDate
+{
+	font-family: "Segoe UI Light",Arial;
+}
+.writeNoteContainer .fileArea 
+{
+	border-radius: 3px;
+	background:rgba(74, 195, 195, 0.23);
+}
+.writeNoteContainer .fileArea .option
+{
+	background: cornflowerblue;
+	width: 100%;
+	margin: 0%;
+	height: 2em;
+color: azure;
+font-size: 1.2em;
+line-height: 2em;
+font-family: "Segoe UI Light",Arial;
+}
+.writeNoteContainer .fileArea .option span
+{
+	background: rgb(49, 54, 69);
+	color: white;
+	cursor: pointer;
+	border-radius: 2px;
+	margin: .5em;
+	padding: .3em;
+}
+.writeNoteContainer .fileArea .option #folderSpec
+{
+color: black;
+background: rgba(255, 255, 255, 0.36);
+width: 6em;
+}
+.writeNoteContainer .fileArea .option span:hover
+{
+	background: linear-gradient( rgb(49, 54, 69),rgb(5, 20, 50));	
+}
+.writeNoteContainer .fileArea .fileList
+{
+	width: 100%;
+	margin: 0%;
+	height: calc(100% - 2em);
+	background:rgba(74, 195, 195, 0.23);
+	overflow-y: hidden;
+}
+.writeNoteContainer .fileArea .fileList .uploadOptions
+{
+	position: absolute;
+	bottom: 0em;
+	right: 0em;
+	background: none;
+}
+.writeNoteContainer .fileArea .fileList .file
+{
+width:8em;
+height: 8em;
+border: 1px solid yellowgreen;
+float: left;
+margin: .2em;
+background-repeat: no-repeat;
+}
+.writeNoteContainer .fileArea .fileList .file .progressWrap
+{
+	width: 8em;
+	display: block;
+	position: relative;
+	bottom: 0%;
+}
+.writeNoteContainer .fileArea .fileList .file .progressWrap .prgrss
+{
+/*Progres Bar styling here*/
+width: 100%;
+	display: none;
+
+}
+.writeNoteContainer .fileArea .fileList .file .info
+{
+position: relative;
+width:100%;
+margin: .5%;
+height: 5em;
+color: midnightblue;
+background: rgba(225, 228, 255, 0.64);
+word-wrap:  break-word;
+
+	 bottom: 0%;
+	 font-size: .8em;
+}
+
+.writeNoteContainer .fileArea .fileList .file .opts
+{
+	position: relative;
+	min-height: 2em;
+	width: 100%;
+	
+}
+.writeNoteContainer .fileArea .fileList .file .opts span
+{
+	float: left;
+background: rgba(255, 218, 185, 0.50);
+}
+.writeNoteContainer .fileArea .fileList .file .opts span:hover
+{
+	background: rgba(255, 218, 185, 0.90);
+	cursor: pointer;
+}
+.writeNoteContainer .fileArea .fileList .file .opts:hover
+{
+
+}
+.writeNoteContainer .fileArea .fileList .file .opts img
+{
+}
+.writeNoteContainer .fileArea .fileList .file img
+{
+width:2em;
+height: 2em;
+
+}
+.writeNoteContainer .toolsSpace
+{
+margin-top: .5%;
+width:45%;
+height:10%;
+background: none;
+text-align: left;
+}
+.notificationSpace
+{
+	font-size: 2.5em;
+	text-align: center;
+	font-family: "segoe UI light",Arial;
+	color: green;
+}
+#notification
+{
+	font-size: .7em;
+}
+.titleBar
+{
+	position: relative;
+	min-height: 3vh;
+	left: 15vw;
+	width: calc(100vw - 15vw);
+	font-size: 1.5em;
+	font-family: "Segoe UI light",Arial;
+	text-indent: 1em;
+}
+#titleBar_title
+{
+	margin-right: 1em;
+
+}
+#titleBar_options span:hover
+{
+color: cornflowerblue;
+}
+.contentPlace .note{
+	position: relative;
+	width: 80%;
+margin-top: 1vh;
+margin-bottom: 1vh;
+	min-height: 10vh;
+	border-radius: 2px;
+	background: white;
+	box-shadow: 0px 1px .5px black;
+
+
+}
+.contentPlace .noNote
+{
+position: relative;
+width: 80%;
+margin-top: 2vh;
+min-height: 10vh;
+border-radius: 2px;
+background: white;
+box-shadow: 0px 1px .5px black;
+font-size: 1.5em;
+color: dimgrey;
+opacity: .8;
+line-height: 10vh;
+
+}
+.note .noteInfo
+{
+	height: 4vh;
+	position: relative;
+	top: 0;
+	width: 100%;
+	background: cornflowerblue;
+	color: white;
+	text-align: left;
+	text-indent: 1em;
+	line-height: 4vh;
+}
+.note .locationSlot 
+{
+	position: relative;
+	height: 4vh;
+	padding: 1em;
+background: linear-gradient(aliceblue,rgb(211, 232, 250));
+}
+.note .locationSlot div
+{
+	float: left;
+	margin-left: 1em;
+}
+.note .locationSlot .locationInfo
+{
+color: rgba(0, 0, 0, 0.6);
+font-size: 1em;
+font-family: arial;
+}
+.note .noteInfo .options
+{
+	float: right;
+	padding-right: 1em;
+
+}
+.note .noteInfo .options .option
+{
+cursor: pointer;
+color: rgb(240, 240, 240);
+text-shadow: 0px 0px 2px rgb(116, 100, 100);
+}
+.note .dateDiff
+{
+	
+position: relative;
+color: rgba(0, 0, 0, 0.28);
+text-align: right;
+padding-right: .5em;
+}
+
+.note .contentSlot
+{
+
+position: relative;
+margin-top: 1em;
+	text-align: justify;
+	background: white;
+	width: 98%;
+	text-indent: 1em;
+	min-height: calc(10vh - 4vh);
+color: rgba(0, 0, 0, 0.77);
+cursor: auto;
+padding-bottom: 1em;
+}
+.note .fileSlot
+{
+		margin-top: 1em;
+	position: relative;
+	display: block;
+	background: aliceblue;
+	z-index: 45;
+	min-height: 6em;
+	overflow-y:  scroll;
+	padding: 1em;
+	border-top: 1px solid rgba(19, 20, 23, 0.4);
+}
+.note .fileSlot .file
+{
+	position: relative;
+	height: 8em;
+	min-width: 5em;
+		max-width: 5em;
+background: gainsboro;
+	float: left;
+	margin-left: 1em;
+	line-height: 13em;
+	font-size: .9em;
+	cursor: pointer;
+	overflow-x: hidden;
+		overflow-y: hidden;
+		border-radius: 2px;
+		box-shadow: 1px 1px 1px slategray;
+		box-shadow: 1px 1px 1px rgb(255, 255, 255);
+color: rgb(92, 95, 98);
+border: 1px solid silver;
+background-repeat: no-repeat
+	}
+	
+.contentPlace .linkBox
+{
+	position: relative;
+	float: left;
+	width: 15vw;
+	background: wheat;
+	background:linear-gradient(cornflowerblue,white);
+	margin: 1em;
+	box-shadow: 1px 1px 1px slategray;
+	cursor: pointer;
+}
+.contentPlace .linkBox:hover
+{
+			box-shadow: 1px 1px 1px cadetblue;
+}
+.contentPlace .linkBox .linkOpt
+{
+background: rgba(241, 238, 245, 0.29);
+	width: 100%;
+	font-size: 1em;
+	text-align: right;
+	color: darkolivegreen;
+}
+.contentPlace .linkBox .linkOpt:hover
+{
+	color: white;
+}
+.contentPlace .linkBox .titlePlace
+{
+	padding: 1em;
+				text-align: justify;
+}
+.contentPlace .noFiles
+{
+	color: rgb(92, 95, 98);
+}
+.contentPlace .fileBox
+{
+	position: relative;
+	float: left;
+	width: 12vw;
+	min-height: 12vh;
+	height: 12vh;
+background: linear-gradient(rgb(225, 234, 250),white);
+	margin: .5em;
+	box-shadow: 0px 0px 1px slategray;
+	cursor: pointer;
+	word-wrap: break-word;
+	color: rgb(92, 95, 98);
+}
+.contentPlace .fileBox:hover
+{
+box-shadow: 0px 0px 1px rgb(3, 34, 65);
+}
+.contentPlace .fileBox:focus
+{
+box-shadow: 1px 1px 1px rgb(80, 34, 65);
+}
+.contentPlace .fileBox .fileOpt
+{
+background: rgba(241, 238, 245, 0.29);
+
+	font-size: 1em;
+	text-align: right;
+	color: darkolivegreen;
+}
+.contentPlace .fileBox .fileOpt:hover
+{
+	color: white;
+}
+.contentPlace .fileBox .filePlace
+{
+	padding: 1em;
+	text-align: justify;
+	font-size: .9em;
+}
+.contentPlace .fileBox .fileIcon
+{
+	position: absolute;
+	bottom: 0px;
+	height: 2em;
+	width:2em;
+	background-repeat: no-repeat;
+	margin: .2em;
+	opacity: .6;
+}
+.contentPlace .fileBox .fileSelectMode
+{
+	position: absolute;
+	width: 12vw;
+	min-height: 12vh;
+	height: 12vh;
+	z-index: 999;
+	top:0;
+}
+/*Style for Folder*/
+
+.contentPlace .folder
+{
+	position: relative;
+	float: left;
+	width: 12vw;
+	min-height: 12vh;
+	height: 12vh;
+background: linear-gradient(rgb(225, 234, 250),white);
+	margin: .5em;
+	box-shadow: 0px 0px 1px slategray;
+	cursor: pointer;
+	word-wrap: break-word;
+	color: rgb(92, 95, 98);
+}
+.contentPlace .folder:hover
+{
+box-shadow: 0px 0px 1px rgb(3, 34, 65);
+}
+.contentPlace .folder:focus
+{
+box-shadow: 1px 1px 1px rgb(80, 34, 65);
+}
+.contentPlace .folder .fileOpt
+{
+background: rgba(241, 238, 245, 0.29);
+
+	font-size: 1em;
+	text-align: right;
+	color: darkolivegreen;
+}
+.contentPlace .folder .fileOpt:hover
+{
+	color: white;
+}
+.contentPlace .folder .filePlace
+{
+	padding: 1em;
+	text-align: justify;
+	font-size: 1em;
+}
+.contentPlace .folder .fileIcon
+{
+	position: absolute;
+	bottom: 0px;
+	height: 2em;
+	width:2em;
+	background-repeat: no-repeat;
+	margin: .2em;
+	opacity: .6;
+}
+.contentPlace .folder .fileCount
+{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 1;
+	margin-right: 1;
+	color: rgba(0, 0, 0, 0.35);
+}
+
+.dropDown
+{
+	position: absolute;
+	background: white;
+	z-index: 999;
+	margin:0;
+}
+.dropDown li
+{
+border-bottom: black dotted 1px;
+	margin-bottom : 0;
+}
+#calender
+{
+	position: absolute;
+	background: thistle;
+	padding:1em;
+	background: white;
+	box-shadow: 0px 0px 1px blueviolet;
+	display: none;
+	opacity: .3;
+
+}
+#calender:hover{
+		opacity: 1;
+}
+#calender .options
+{
+	cursor: pointer;
+}
+#calender .options:hover
+{
+color: red;
+}
+#cal
+{
+
+}
+#cal .ui-datepicker-inline
+{
+
+}
+
+/*Rules for Location Attach*/
+
+
+
+
+.writeNoteContainer .places 
+{
+	border-radius: 3px;
+	background:rgba(224, 224, 224, 1);
+	float:right;
+	display: none;
+}
+.writeNoteContainer .places .option
+{
+	background: cornflowerblue;
+	width: 100%;
+	margin: 0%;
+	height: 2em;
+color: azure;
+font-size: 1.2em;
+line-height: 2em;
+
+}
+.writeNoteContainer .places .option span
+{
+	background: rgb(49, 54, 69);
+	color: white;
+	cursor: pointer;
+	border-radius: 2px;
+	margin: .5em;
+	padding: .3em;
+}
+.writeNoteContainer .places .option span:hover
+{
+	background: linear-gradient( rgb(49, 54, 69),rgb(5, 20, 50));	
+}
+.writeNoteContainer .places .option .turnit
+{
+	font-style:  normal;
+	text-transform:  none;
+	background: rgb(49, 54, 69);
+	color: white;
+	cursor: pointer;
+	border-radius: 2px;
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+}
+.writeNoteContainer .places .option .turnit:hover
+{
+	background: linear-gradient( rgb(49, 54, 69),rgb(5, 20, 50));	
+}
+.writeNoteContainer .places .mapRoll
+{
+	width: 100%;
+	height: 100%;
+}
+.writeNoteContainer .places  .mapRoll .place
+{
+	position: relative;
+	float: left;
+	width:200px;
+	height:200px;
+}
+.writeNoteContainer .places  .place .info
+{
+position: relative;
+width:100%;
+margin: .5%;
+height: 1em;
+color: midnightblue;
+background: rgba(225, 228, 255, 0.64);
+word-wrap:  break-word;
+
+	 bottom: 0%;
+	 font-size: .8em;
+}
+
+.writeNoteContainer .places  .place .opts
+{
+	position: relative;
+	min-height: 1em;
+	width: 100%;
+	
+}
+.writeNoteContainer .places  .place .opts span
+{
+	float: left;
+background: rgba(255, 218, 185, 0.50);
+}
+.writeNoteContainer .places  .place .opts span:hover
+{
+	background: rgba(255, 218, 185, 0.90);
+	cursor: pointer;
+}
+.contentPlace .dvSurround
+{
+	position: relative;
+	float: left;
+	width:25em;
+	height: 20em;
+background: rgba(135, 166, 223, 1);
+	margin: .5em;
+	box-shadow: 0px 0px 1px black;	
+
+}
+.contentPlace .placeP
+{
+	position: relative;
+	float: left;
+	/*width:13em;*/
+	width: 100%;
+	height: 13em;
+	background:  wheat;
+	/*margin: .5em;*/
+	box-shadow: 0px 0px 1px black;
+	cursor: pointer;
+}
+.contentPlace .dvSurround .options
+{
+	width: 100%;
+	height: 1em;
+}
+.contentPlace .dvSurround .options span
+{
+	float: right;
+	cursor: pointer;
+	color: rgba(0, 0, 0, 0.57);
+	color: rgba(255, 255, 255, 1);
+}
+.contentPlace .dvSurround .placeInfoName
+{
+position: absolute;
+background: rgba(255, 255, 255, 0.43);
+top: 14.5em;
+min-height: calc(20em - 14.5em);
+width: 100%;
+color: rgba(0, 0, 0, 0.77);
+text-align: left;
+/*padding: .1em;*/
+}
+.contentPlace .dvSurround .placeInfoName .address
+{
+	padding: 1em;
+	color: rgba(0, 0, 0, 0.6);
+}
+.writeNoteContainer .peopleSlot
+{
+	float: left;
+	background: white;
+}
+.menu
+{
+float: left;
+min-width: 10em;
+border: none;
+box-shadow: 0px 0px 1px black;
+border-radius: 2px;
+background: white;
+}
+.menu ul
+{
+	list-style:  none;
+}
+.menu ul li{
+cursor: pointer;
+font-style:  normal;
+text-transform:  capitalize;
+background: white;
+height: 2em;
+line-height: 2em;
+padding: .5em;
+color: rgba(0, 0, 0, 0.54);
+margin: 0;
+}
+.menu ul li:hover{
+cursor: pointer;
+background: blanchedalmond;
+color: rgba(0, 0, 0, 0.98);
+}
+.notificationContainer
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-height: 50vh;
+    background:  #892424;
+    width: 20vw;
+    z-index: 999;
+}
+.companyPanel
+{
+position: absolute;
+bottom: 0;
+color: rgba(223, 208, 208, 0.29);
+font-size: .7em;
+text-align: center;
+width: 100%;
+}
+.companyPanel:hover
+{
+	color: rgba(223, 208, 208, 0.80);
+
+}
+/**/

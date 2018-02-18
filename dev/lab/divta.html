@@ -1,0 +1,58 @@
+<script src="../../ajax_1_10_2.js"></script>
+<script>
+var end=0;
+var begin=0;
+function $id(ob)
+{
+    return document.getElementById(ob);
+}
+function output(ob)
+{
+    var cont=ob.innerHTML;
+    var size=cont.length;
+    for(var a=0;a<size;a++)
+        {
+            if(cont[a]=='h'&&cont[a+1]=='t'&&cont[a+2]=='t'&&cont[a+3]=='p'&&cont[a+4]==':'&&cont[a+5]=='/'&&cont[a+6]=='/')
+                {
+                    begin=a;
+                    while(cont[a]!=' '&&a!=size)
+                        {
+                            a++;
+                            end++;
+                        }
+                         insertWord($id('source').value,"<b>",begin);
+
+                }
+
+        }
+
+
+
+end=0;
+    $id('source').value=cont;
+}
+function insertWord(orginal,word,position)
+{
+    var sec1=orginal.substr(0,position);
+    var out = sec1+word+orginal.substr(position);
+    // console.log(out);
+    $id('source').value=out;
+}
+function fillin()
+{
+    
+}
+</script>
+<style>
+#typespot
+{
+width:500px;
+height:500px;
+border: 1px double  yellowgreen;
+}
+	</style>
+<div id= 'typespot' contenteditable="true" onkeyup="output(this)"></div>
+<div id="count"></div>
+<div id="show" style="font-family:arial,serif;"></div>
+<textarea rows="10" cols="30" id ="source"style="display:block;"></textarea>
+<p id="out"></p>
